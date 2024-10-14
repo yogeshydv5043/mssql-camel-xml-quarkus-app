@@ -21,17 +21,8 @@ public class ClientController {
     private DataSendService ciService;
 
 
-//    @POST
-//    @Path("/")
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public Response validateUser(Client client) {
-//        String client1 = ciService.validateAndSend(client);
-//        return Response.status(Response.Status.OK).entity(client1).build();
-//    }
-
     @POST
-    @Consumes(MediaType.MULTIPART_FORM_DATA) // Multi-part request ke liye
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.APPLICATION_JSON)
     public Response handleForm(@MultipartForm Client clientData) throws IOException {
         return ciService.validateAndSend(clientData);

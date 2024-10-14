@@ -15,18 +15,8 @@ public class DefaultBHS extends RouteBuilder {
                 .log(" This Is DefaultBHS : ${body}")
                 .unmarshal().json(JsonLibrary.Jackson, MessageData.class)
                 .process(exchange -> {
-                    // Assuming the body is of type MessageData (custom class)
                     MessageData messageData = exchange.getIn().getBody(MessageData.class);
-
                     RequestToData requestToData=new RequestToData(messageData.getTo(),messageData.getXmlData());
-
-                    // Extract the 'from' field from the message
-//                    String to = messageData.getTo();
-//                       String  xmlData=  messageData.getXmlData();
-//                    // Log the 'from' field value
-//                    System.out.println("To field value: " + to);
-
-                    // Optionally modify the message if needed, then set it back
                     exchange.getIn().setBody(requestToData);
                 })
                 .choice()

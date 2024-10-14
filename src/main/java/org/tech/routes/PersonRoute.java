@@ -24,15 +24,13 @@ public class PersonRoute extends RouteBuilder {
         jaxbDataFormat.setContextPath("org.tech.xmlModel");
 
         from("direct:personSave")
-//                .log("Person Save Route : ${body}")
                 .unmarshal(jaxbDataFormat)
-//                .log("Unmarshalled Person object: ${body}")
                 .process(exchange -> {
                     Person person = exchange.getIn().getBody(Person.class);
                     exchange.getIn().setBody(person);
                 })
               //  .bean(PersonService.class,"addPerson")
-                .log("Person saved successfully")
+                .log("Sending person data ... ")
                 .to("bean:personService?method=addPerson");
 
     }

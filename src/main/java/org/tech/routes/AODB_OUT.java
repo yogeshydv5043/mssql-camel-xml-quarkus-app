@@ -12,16 +12,15 @@ public class AODB_OUT extends RouteBuilder {
     public void configure() throws Exception {
 
         from("activemq:queue:aodbOut")
+                .log("AODB-OUT SERVICE : ")
                 .unmarshal().json(JsonLibrary.Jackson, RequestToData.class)
                 .process(exchange -> {
-                    // Assuming the body is of type MessageData (custom class)
                     RequestToData requestToData = exchange.getIn().getBody(RequestToData.class);
-                    // Extract the 'from' field from the message
+
                     String xmlData = requestToData.getXmlData();
-                    // Optionally modify the message if needed, then set it back
-                    exchange.getIn().setBody(requestToData.getXmlData());
+
+                    exchange.getIn().setBody(xmlData);
                 })
-                .log("This is AODB-OUT : ")
                 .to("log: ${body}");
 
     }

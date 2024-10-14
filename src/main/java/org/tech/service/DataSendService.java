@@ -45,11 +45,8 @@ public class DataSendService {
                 messageData.setXmlData(xmlContent); // Reusing the converted string
                 messageData.setTo(requestData.getTo());
 
-                // Log the XML data before validation for debugging
-                System.out.println("XML Data before Validation:\n" + xmlContent);
                 // Check if validation is successful
                 if (validationResponse.isValid()) {
-                    log.info("XML Data After Validation : " + xmlContent);  // Log validated data
                     producerTemplate.requestBody("direct:sendData", messageData, String.class);
                     return Response.status(Response.Status.OK).entity("Validation Successful. Message Sending...").build();
                 } else {

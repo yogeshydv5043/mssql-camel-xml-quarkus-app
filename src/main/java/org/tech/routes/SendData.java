@@ -10,10 +10,9 @@ public class SendData extends RouteBuilder {
     public void configure() throws Exception {
 
         from("direct:sendData")
-                .log("Processing message in Validationroutes: ${body}")
+                .log("Sending data to ProcessingQueue ... ")
                 .marshal().json(JsonLibrary.Jackson)
                 .to("activemq:queue:processedQueue");
-             //   .to("activemq:queue:processedQueue?jmsMessageType=Object");
 
     }
 }

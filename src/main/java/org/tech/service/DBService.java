@@ -29,7 +29,7 @@ public class DBService {
         return "Record added successfully with name " + clientRefDto.getName();
     }
 
-    //get All
+    //get AllUsers
     public List<ClientRef> getall() {
        List<ClientRef> list = clientRefRepository.findAll().list();
         return list;

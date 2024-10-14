@@ -12,15 +12,12 @@ public class RouteListener extends RouteBuilder {
     @Override
     public void configure() throws Exception {
         from("activemq:queue:processedQueue")
-                .log("Received message in processed route :- ${body}")
+                .log("Received message in processed route : ")
                  .unmarshal().json(JsonLibrary.Jackson, MessageData.class)
                 .process(exchange -> {
                     // Get the object from the message body
                     MessageData messageData = exchange.getIn().getBody(MessageData.class);
-
                     if (messageData != null) {
-                        System.out.println("Received ObjectMessage: " + messageData);
-                        // Optionally modify the message if needed, then set it back
                         exchange.getIn().setBody(messageData);
                     } else {
                         System.out.println("Received null object message.");

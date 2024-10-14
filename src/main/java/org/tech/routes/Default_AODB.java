@@ -11,12 +11,12 @@ public class Default_AODB extends RouteBuilder {
     public void configure() throws Exception {
 
         from("activemq:queue:defaultAodb")
+                .log("Default-AODB SERVICE :")
                 .unmarshal().json(JsonLibrary.Jackson, RequestToData.class)
                 .process(exchange -> {
                     RequestToData requestToData = exchange.getIn().getBody(RequestToData.class);
                     exchange.getIn().setBody(requestToData.getXmlData());
                 })
-                .log("This is Default-AODB :")
                 .to("log: {body}");
     }
 }

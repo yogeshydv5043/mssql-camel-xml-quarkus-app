@@ -14,14 +14,12 @@ public class ValidationRoute extends RouteBuilder {
 
         from("direct:validateXml")
                 .doTry()
-                .log("${body}")
+                .log(" Before Validation : ${body}")
                 .to("validator:Person.xsd")
               //  .to("validator:AIDXFlightLeg.xsd")
                 .setHeader("validationStatus", constant(true))
                 .process(exchange -> {
-
                     String xmlData =exchange.getIn().getBody().toString();
-
                     ValidationResponse response = new ValidationResponse();
                     response.setValid(true);
                     exchange.getIn().setBody(response);

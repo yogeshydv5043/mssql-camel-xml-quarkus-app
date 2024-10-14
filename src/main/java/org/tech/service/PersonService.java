@@ -29,7 +29,7 @@ public class PersonService {
         person.setEmail(personRequest.getEmail());
         person.setPhone(personRequest.getPhone());
         personRepository.persist(person);
-        System.out.println("Person Saved in DB : " + person.toString());
+        System.out.println("Person Saved in DB Table : " + person);
     }
 
     public List<PersonModel> getAllPerson() {
