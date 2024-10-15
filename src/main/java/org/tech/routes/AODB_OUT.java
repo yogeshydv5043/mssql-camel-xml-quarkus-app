@@ -21,7 +21,7 @@ public class AODB_OUT extends RouteBuilder {
 
                     exchange.getIn().setBody(xmlData);
                 })
-                .to("log: ${body}");
+                .to("direct:flightSave");
 
     }
 }
