@@ -39,10 +39,12 @@
 
     <dependencies>
 
+        <!-- Quarkus and Camel dependencies -->
         <dependency>
             <groupId>org.apache.camel.quarkus</groupId>
             <artifactId>camel-quarkus-xml-jaxb</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.apache.camel.quarkus</groupId>
             <artifactId>camel-quarkus-log</artifactId>
@@ -50,19 +52,8 @@
 
         <dependency>
             <groupId>org.apache.camel.quarkus</groupId>
-            <artifactId>camel-quarkus-timer</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.camel.quarkus</groupId>
-            <artifactId>camel-quarkus-jaxb</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.camel.quarkus</groupId>
             <artifactId>camel-quarkus-bean</artifactId>
         </dependency>
-
 
         <dependency>
             <groupId>org.apache.camel.quarkus</groupId>
@@ -71,36 +62,57 @@
 
         <dependency>
             <groupId>org.apache.camel.quarkus</groupId>
+            <artifactId>camel-quarkus-direct</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.camel.quarkus</groupId>
             <artifactId>camel-quarkus-validator</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.camel.quarkus</groupId>
+            <artifactId>camel-quarkus-jackson</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.camel.quarkus</groupId>
+            <artifactId>camel-quarkus-jaxb</artifactId>
+        </dependency>
+
+
         <!--  Camel Quarkus JMS  -->
+
         <dependency>
             <groupId>org.apache.camel.quarkus</groupId>
             <artifactId>camel-quarkus-jms</artifactId>
         </dependency>
-        <!--  Camel Quarkus ActiveMQ  -->
+
         <dependency>
             <groupId>org.apache.camel.quarkus</groupId>
             <artifactId>camel-quarkus-activemq</artifactId>
         </dependency>
-        <!--  ActiveMQ client dependency  -->
+
+        <!-- ActiveMQ Client -->
         <dependency>
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-client</artifactId>
             <version>6.1.2</version>
         </dependency>
-        <!--  https://mvnrepository.com/artifact/org.messaginghub/pooled-jms  -->
+
+        <!-- Pooled JMS -->
         <dependency>
             <groupId>org.messaginghub</groupId>
             <artifactId>pooled-jms</artifactId>
             <version>3.1.6</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.apache.camel.quarkus</groupId>
-            <artifactId>camel-quarkus-direct</artifactId>
-        </dependency>
+        <!-- Quarkus Dependency -->
+
+        <!--        <dependency>-->
+        <!--            <groupId>io.quarkus</groupId>-->
+        <!--            <artifactId>quarkus-jackson</artifactId>-->
+        <!--        </dependency>-->
 
         <dependency>
             <groupId>io.quarkus</groupId>
@@ -118,10 +130,9 @@
         </dependency>
 
         <dependency>
-            <groupId>org.apache.camel.quarkus</groupId>
-            <artifactId>camel-quarkus-jackson</artifactId>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-resteasy-multipart</artifactId>
         </dependency>
-
 
         <!-- mssql-jdbc -->
         <dependency>
@@ -130,15 +141,9 @@
             <version>12.8.1.jre11</version>
         </dependency>
 
-
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-jdbc-mssql</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-reactive-mssql-client</artifactId>
         </dependency>
 
         <dependency>
@@ -169,11 +174,6 @@
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
             <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-resteasy-multipart</artifactId>
         </dependency>
 
     </dependencies>

@@ -22,7 +22,6 @@ public class FlightInfoRequest {
     @Inject
     private FlightInfoService flightInfoService;
 
-
     private String flightNumber;
 
     private String departureAirport;
@@ -52,33 +51,26 @@ public class FlightInfoRequest {
     private LocalDateTime lastApiRequestTime;
 
     public FlightInfoRequest convertToFlightInfoRequest(AIDXFlightLeg flight) {
-
         FlightInfoRequest flightInfoRequest = new FlightInfoRequest();
-
         flightInfoRequest.setFlightNumber(flight.getFlightLeg().getFlightNumber());
         flightInfoRequest.setActualDeparture(LocalDateTime.now());
-        flightInfoRequest.setDepartureAirport(flight.getFlightLeg().getDeparture().getAirport().getIata().toUpperCase()+" / "+flight.getFlightLeg().getDeparture().getAirport().getIcao().toUpperCase());
-        flightInfoRequest.setArrivalAirport(flight.getFlightLeg().getArrival().getAirport().getIata().toUpperCase()+" / "+ flight.getFlightLeg().getDeparture().getAirport().getIcao().toUpperCase());
+        flightInfoRequest.setDepartureAirport(flight.getFlightLeg().getDeparture().getAirport().getIata().toUpperCase() + " / " + flight.getFlightLeg().getDeparture().getAirport().getIcao().toUpperCase());
+        flightInfoRequest.setArrivalAirport(flight.getFlightLeg().getArrival().getAirport().getIata().toUpperCase() + " / " + flight.getFlightLeg().getDeparture().getAirport().getIcao().toUpperCase());
+       // Local Date Parse
         flightInfoRequest.setScheduledDeparture(LocalDateTime.parse(flight.getFlightLeg().getDeparture().getScheduledDateTime()));
+        // Local Date Parse
         flightInfoRequest.setScheduledArrival(LocalDateTime.parse(flight.getFlightLeg().getArrival().getScheduledDateTime()));
+        // Local Date Parse
         flightInfoRequest.setActualArrival(LocalDateTime.parse(flight.getFlightLeg().getOperationalTimes().getActualOnBlockTime()));
-       //??
         flightInfoRequest.setFlightStatus(FlightStatus.Arrived);
         flightInfoRequest.setAircraftType(flight.getFlightLeg().getAircraft().getType());
-        //??
         flightInfoRequest.setGateNumber(flight.getFlightLeg().getAircraft().getRegistration());
-       // ??
         flightInfoRequest.setRefreshTimestamp(LocalDateTime.now());
-       // ??
         flightInfoRequest.setNextRefreshTime(LocalDateTime.now());
-       // ??
-        flightInfoRequest.setApiRequestCount(2);
-       // ??
+        flightInfoRequest.setApiRequestCount(5);
         flightInfoRequest.setLastApiRequestTime(LocalDateTime.now());
 
         flightInfoService.addFlightRecord(flightInfoRequest);
         return flightInfoRequest;
     }
-
-
 }

@@ -4,6 +4,8 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.dataformat.JaxbDataFormat;
+import org.apache.camel.model.dataformat.JsonLibrary;
+import org.tech.dto.request.FlightInfoRequest;
 import org.tech.repository.PersonRepository;
 import org.tech.service.PersonService;
 import org.tech.xmlModel.Person;
@@ -32,6 +34,10 @@ public class FlightRoute extends RouteBuilder {
                     exchange.getIn().setBody(flightLeg);
                 })
               //  .bean(PersonService.class,"addPerson")
+              //  .marshal().json(JsonLibrary.Jackson, FlightInfoRequest.class)
+                .log("Flight leg XML : ${body} ")
+               // .unmarshal().json(JsonLibrary.Jackson, FlightInfoRequest.class)
+                .log("UnMarshal Data :  ${body}")
                 .log("Sending person data ... ")
                 .to("bean:flightInfoRequest?method=convertToFlightInfoRequest");
 

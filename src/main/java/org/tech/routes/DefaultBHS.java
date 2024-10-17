@@ -12,7 +12,7 @@ public class DefaultBHS extends RouteBuilder {
     public void configure() throws Exception {
 
         from("activemq:queue:defaultBhs")
-                .log(" This Is DefaultBHS : ${body}")
+                .log(" This Is DefaultBHS Service : ")
                 .unmarshal().json(JsonLibrary.Jackson, MessageData.class)
                 .process(exchange -> {
                     MessageData messageData = exchange.getIn().getBody(MessageData.class);
